@@ -1,5 +1,7 @@
 public class Main {
-    int a = 5;
+    public static void main(String[]args){
+        int a = 5;
+    }
 
     public int getA() {
         return a;
