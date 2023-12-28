@@ -1,11 +1,17 @@
-public class Keyword {
-    int a = 5;
+public class Keyword
+{
+	public String name;
+	public double weight;
 
-    public int getA() {
-        return a;
-    }
+	public Keyword(String name, double weight)
+	{
+		this.name = name;
+		this.weight = weight;
+	}
 
-    public void setA(int a) {
-        this.a = a;
-    }
+	@Override
+	public String toString()
+	{
+		return "[" + name + "," + weight + "]";
+	}
 }
