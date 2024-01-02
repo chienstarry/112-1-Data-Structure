@@ -26,14 +26,15 @@ text-decoration:underline;
 <body style='background-color: #F4F6FF'>
 <form action='${requestUri}' method='get'>
 
-	<div style='position: absolute;margin-top:190px;margin-left:50px'>
+	
+	<div style='position: absolute; margin-top:190px; margin-left:50px'>
 		<%
 		String[][] orderList = (String[][]) request.getAttribute("query");
 		for (int i = 0; i < orderList.length; i++) {
 			String s=orderList[i][1];
 		%>
 		
-		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br>連結<br>
+		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br><br>
 		<br>
 		<%
 }
@@ -43,10 +44,15 @@ text-decoration:underline;
 		<img src="images/reading.png"
 			style='position: absolute; width: 135px; height: 100px; left: 50%; top: 50%; margin-top: -285px; margin-left: -605px'>
 	</div>
-		<div>
-		<input type='text' class="border-style" id="padding" name='keyword'
-			style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -250px; margin-left: -400px; width: 800px; height: 25px'
+	
+	<div>
+	<input type='text' class="border-style" id="padding" name='keyword'
+			style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -250px; margin-left: -400px; width: 800px; height: 25px; border-radius: 90px; border: 4px solid #ADBDFF; background: rgba(244, 246, 255, 0.70)'
 			placeholder = '請輸入關鍵字' value='<%=request.getParameter("keyword")%>'/>
+	</div>
+	<div>
+		<input type='image' src="images/magnifier.png"
+			style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -255px; margin-left: 368px' />
 	</div>
 
 </form>
