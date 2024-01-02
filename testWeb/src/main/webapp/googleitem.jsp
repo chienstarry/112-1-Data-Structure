@@ -52,7 +52,7 @@ text-decoration:underline;
 	</div>
 	<div>
 		<input type='image' src="images/magnifier.png"
-			style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -255px; margin-left: 368px' />
+			style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -255px; margin-left: 368px; background: url(<path-to-image>)/ cover no-repeat; opacity: 25%; mix-blend-mode: color-burn' />
 	</div>
 
 </form>
