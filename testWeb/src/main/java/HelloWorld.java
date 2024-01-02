@@ -1,56 +1,27 @@
-
-
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
-/**
- * Servlet implementation class HelloWorld
- */
-@WebServlet("/BmiC")
+@WebServlet("/search")
 public class HelloWorld extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HelloWorld() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-    /*
-     * ²Ä¤TºØ§@ªk:¤G¦X¤@¡A¥ÎBmiTogether­¶­±¦^À³get request&°epostªí³æ¤Î¦^À³post request¥á¹L¨Óªºªí³æ
-     */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// è™•ç†æœç´¢è¯·æ±‚ï¼Œé€™è£¡ç°¡åŒ–ï¼Œåƒ…è½‰ç™¼
+		String keyword = request.getParameter("keyword");
+		int searchNum = Integer.parseInt(request.getParameter("searchNum"));
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * ¦^À³get request&°epostªí³æ
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		request.getRequestDispatcher("BmiTogether.jsp")
-		 .forward(request, response); 
+		// è¿™é‡Œåº”æ·»åŠ å¤„ç†æœç´¢é€»è¾‘çš„ä»£ç ï¼Œä¾‹å¦‚è°ƒç”¨å…¶ä»–æœåŠ¡æˆ–ç®—æ³•
+
+		// å‡è®¾æˆ‘ä»¬å¾—åˆ°äº†æœç´¢ç»“æœï¼Œç°åœ¨è½¬å‘åˆ° googleitem.jsp
+		request.setAttribute("query", new String[][] { /* æœç´¢ç»“æœæ•°æ® */ });
+		request.getRequestDispatcher("googleitem.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * ¦^À³post request¥á¹L¨Óªºªí³æ
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
-		
 	}
-
 }
