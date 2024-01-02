@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,6 +20,8 @@ public class GoogleQuery
 	public String searchKeyword;
 	public String url;
 	public String content;
+	public ArrayList<String> outputName = new ArrayList<>();
+	public ArrayList<String> outputSite = new ArrayList<>();
 	
 	public GoogleQuery(String searchKeyword)
 	{
@@ -31,6 +35,7 @@ public class GoogleQuery
 			// when entering Chinese keywords.
 			String encodeKeyword=java.net.URLEncoder.encode(searchKeyword,"utf-8");
 			this.url = "https://www.google.com/search?q="+encodeKeyword+"&oe=utf8&num=20";
+			//總共出現幾筆結果
 			
 			// this.url = "https://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=20";
 		}
@@ -61,45 +66,41 @@ public class GoogleQuery
 		return retVal;
 	}
 	
-	public ArrayList<String> query() throws IOException
+	public void query() throws IOException
 	{
-		ArrayList<String> output = new ArrayList<>(); 
 		if(content == null)
 		{
 			content = fetchContent();
 		}
-		
-		//using Jsoup analyze html string
+
 		Document doc = Jsoup.parse(content);
 		
-		//select particular element(tag) which you want 
-		Elements lis = doc.select("div");
-		lis = lis.select(".kCrYT");
+		
+		Elements lis = doc.select("div").select(".kCrYT");
 		
 		for(Element li : lis)
 		{
-			try 
-			{
-				String citeUrl = li.select("a").get(0).attr("href").replace("/url?q=", "");
-//				String title = li.select("a").get(0).select(".vvjwJb").text();
-				output.add(citeUrl);
-//				
-//				if(title.equals("")) 
-//				{
-//					continue;
-//				}
+			
+			try {
+	            String encodeUrl = li.select("a").get(0).attr("href").replace("/url?q=", "");
+	            String decodedUrl = URLDecoder.decode(encodeUrl, StandardCharsets.UTF_8.name());
+	            // 刪除不需要的部分，'&sa=' 之後的
+	            String title = li.select("a").get(0).select(".vvjwJb").text();
 				
-//				System.out.println("Title: " + title + " , url: " + citeUrl);
-				
-				//put title and pair into HashMap
-				
-
-			} catch (IndexOutOfBoundsException e) 
-			{
-//				e.printStackTrace();
-			}
+				if(title.equals("")) 
+				{
+					continue;
+				}
+	            int endIndex = decodedUrl.indexOf("&sa=");
+	            if (endIndex != -1) {
+	                decodedUrl = decodedUrl.substring(0, endIndex);
+	            }
+	            // 儲存url
+	            outputSite.add(decodedUrl);
+	            outputName.add(title);
+	        } catch (Exception e) {
+	            // 處理錯誤(print 錯誤)
+	        }
 		}
-		
-		return output;
 	}
 }

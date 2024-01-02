@@ -1,73 +1,214 @@
-import java.awt.geom.PathIterator;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import java.util.*;
-
-public class Main
+/*public class Main 
 {
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args) 
 	{
-		// root node
-		GoogleQuery googleQuery = new GoogleQuery("小說");
-		ArrayList<String> googleList = new ArrayList<>();
-		googleList = googleQuery.query();
-		ArrayList<WebPage> webPagelist = new ArrayList<>();
-		ArrayList<WebTree> webTreelist = new ArrayList<>();
-		for(int i=0;i<googleList.size();i++) {
-			WebPage rootPage = new WebPage(googleList.get(i), "googleSearch");
-			webPagelist.add(rootPage);
-			WebTree tree = new WebTree(rootPage);
-			webTreelist.add(tree);
-			OtherQuery subOtherQuery = new OtherQuery(rootPage.url);
-			ArrayList<String> subList = new ArrayList<>();
-			for(int j=0;j<subList.size();j++) {
-				tree.root.addChild(new WebNode(new WebPage(subList.get(j),"sub")));
-			}
-			
-		}
-		WebPage rootPage = new WebPage(googleList.get(1), "googleSearch");
-		WebTree tree = new WebTree(rootPage);
-
-		// build childnode
-		tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Publications.html", "Publication")));
-		tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Projects.html", "Projects")));
-		tree.root.children.get(1).addChild(new WebNode(new WebPage("https://vlab.cs.ucsb.edu/stranger/", "Stranger")));
-		tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Members.html", "Member")));
-		tree.root.addChild(new WebNode(new WebPage("http://soslab.nccu.edu.tw/Courses.html", "Course")));
-		// This website has something wrong, ignore it.
-		// tree.root.children.get(1).addChild(new WebNode(new WebPage("http://soslab.xyz:7777", "AppBeach")));
-				
-		System.out.println("Please input (1)num of keywords (2)name and weight:");
-		Scanner scanner = new Scanner(System.in);
-
-		while (scanner.hasNextLine())
+		try 
 		{
-			int numOfKeywords = scanner.nextInt();
-			ArrayList<Keyword> keywords = new ArrayList<Keyword>();
-
-			for (int i = 0; i < numOfKeywords; i++)
-			{
-				String name = scanner.next();
-				double weight = scanner.nextDouble();
-				Keyword k = new Keyword(name, weight);
-				keywords.add(k);
+			System.out.println("Please input the google search: ");
+			Scanner input = new Scanner(System.in);
+			String googleInput = input.next();
+			GoogleQuery google = new GoogleQuery(googleInput+" 小說");
+			google.query();
+			ArrayList<String> googleNameList = google.outputName;
+			ArrayList<String> googleSiteList = google.outputSite;
+			for (String site : googleSiteList) {
+                System.out.println("Google Search URL: " + site);
+            }
+//			System.out.println(googleNameList);
+//			System.out.println(googleSiteList);
+			ArrayList<WebPage> webPagelist = new ArrayList<>();
+			ArrayList<WebTree> webTreelist = new ArrayList<>();
+			for(int i=0;i<googleNameList.size();i++) {
+				WebPage rootPage = new WebPage(googleSiteList.get(i),googleNameList.get(i));
+//				System.out.println(rootPage.url);
+				webPagelist.add(rootPage);
+				WebTree tree = new WebTree(rootPage);
+				webTreelist.add(tree);
+				GoogleQuery1 subSearch = new GoogleQuery1(googleSiteList.get(i));
+				ArrayList<String> subList = new ArrayList<>();
+				subList = subSearch.query();
+				if(subList!=null) {
+					for(int j=0;j<subList.size();j++) {
+						tree.root.addChild(new WebNode(new WebPage(subList.get(j),"sub"+j)));
+					}
+				}
+//				System.out.println(tree.root.children);
+//				System.out.println(subList);
 			}
+			System.out.println("Please input (1)num of keywords (2)name and weight:");
+			Scanner scanner = new Scanner(System.in);
+			while (scanner.hasNextLine())
+			{
+				int numOfKeywords = scanner.nextInt();
+				ArrayList<Keyword> keywords = new ArrayList<Keyword>();
 
-			tree.setPostOrderScore(keywords);
-			tree.eularPrintTree();
+				for (int i = 0; i < numOfKeywords; i++)
+				{
+					String name = scanner.next();
+					double weight = scanner.nextDouble();
+					Keyword k = new Keyword(name, weight);
+					keywords.add(k);
+				}
+
+				for(int i=0;i<webTreelist.size();i++) {
+//					if(webTreelist.get(i).root.children!=null) {
+						webTreelist.get(i).setPostOrderScore(keywords);;
+						webTreelist.get(i).eularPrintTree();
+//					}
+//					else {
+//						
+//					}
+				}
+			}
+			scanner.close();
+			input.close();
+			
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
 		}
-		scanner.close();
 	}
+}*/
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main 
+{
+	public static ArrayList<Keyword> keywords;
+    public static void main(String[] args) 
+    {
+        try 
+        {
+            System.out.println("Please input the google search: ");
+            Scanner input = new Scanner(System.in);
+            String googleInput = input.next();
+            
+            // 使用主搜索關鍵詞進行Google搜索
+            GoogleQuery google = new GoogleQuery(googleInput + "小說");
+            google.query();
+            ArrayList<String> googleNameList = google.outputName;
+            ArrayList<String> googleSiteList = google.outputSite;
+            
+            
+			//print 網址（最後刪掉）
+            // count to know the count of output url
+            int count = 0;
+            for (String site : googleSiteList) {
+                System.out.println("Google Search URL: " + site);
+                count++;
+            }
+            for (String name : googleNameList) {
+                System.out.println("name: " + name);
+               
+            }
+
+            System.out.print(count);
+
+            
+            ArrayList<WebPage> webPagelist = new ArrayList<>();
+            ArrayList<WebTree> webTreelist = new ArrayList<>();
+
+            
+            // 搜尋結果處理
+            for (int i = 0; i < googleNameList.size(); i++) {
+                WebPage rootPage = new WebPage(googleSiteList.get(i), googleNameList.get(i));
+                webPagelist.add(rootPage);
+                WebTree tree = new WebTree(rootPage);
+                webTreelist.add(tree);
+                GoogleQuery1 subSearch = new GoogleQuery1(googleSiteList.get(i));
+                ArrayList<String> subList = subSearch.query();
+                if (subList != null) {
+                    for (int j = 0; j < subList.size(); j++) {
+                        tree.root.addChild(new WebNode(new WebPage(subList.get(j), "sub" + j)));
+                    }
+                }
+            }
+            
+            ArrayList<Keyword> keywords = KeywordConfig.getKeywordsWithInput(googleInput, 10.0);
+
+        
+            // print tree
+            for (int i = 0; i < webTreelist.size(); i++) {
+                webTreelist.get(i).setPostOrderScore(keywords);
+                webTreelist.get(i).eularPrintTree();
+            }
+
+            input.close();
+            
+            
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+    }
+    
 }
+
+/*import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Please input the google search: ");
+            Scanner input = new Scanner(System.in);
+            String googleInput = input.next();
+
+            // 使用主搜索關鍵詞進行Google搜索
+            GoogleQuery google = new GoogleQuery(googleInput + "小說");
+            google.query();
+            ArrayList<String> googleNameList = google.outputName;
+            ArrayList<String> googleSiteList = google.outputSite;
+
+            ArrayList<WebPage> webPages = new ArrayList<>();
+
+            // 使用主搜索關鍵詞進行Google搜索
+            ArrayList<Keyword> keywords = new ArrayList<>();
+
+            keywords.add(new Keyword(googleInput, 10.0));
+            keywords.add(new Keyword("小說", 3.0));
+            keywords.add(new Keyword("作者", 4.0));
+            keywords.add(new Keyword("最新", 2.0));
+            keywords.add(new Keyword("介紹", 1.0));
+            keywords.add(new Keyword("博客來", -1000.0));
+            keywords.add(new Keyword("誠品", -1000.0));
+            
+
+
+            for (int i = 0; i < googleSiteList.size(); i++) {
+                WebPage page = new WebPage(googleSiteList.get(i), googleNameList.get(i));
+                page.setScore(keywords); 
+                webPages.add(page); 
+            }
+
+            // 排序
+            List<WebPage> sortedPages = webPages.stream()
+                .sorted((page1, page2) -> Double.compare(page2.score, page1.score))
+                .collect(Collectors.toList());
+
+            // print 排序後結果
+            for (WebPage page : sortedPages) {
+                System.out.println("URL: " + page.url + page.name + " - Score: " + page.score);
+            }
+
+            input.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}*/
+
+

@@ -24,21 +24,26 @@ public class WebNode
 		// 		2.set this score to initialize nodeScore
 		//		3.nodeScore must be the score of this webPage 
 		//		  plus all children's nodeScore
-		for(int i=0;i<this.children.size();i++) {
-			if(children.get(i).isTheLastChild()) {
-				children.get(i).webPage.setScore(keywords);
-				children.get(i).nodeScore+=children.get(i).webPage.score;
-				this.nodeScore+=children.get(i).webPage.score;
+//		if(this.children.size()!=0) {
+			for(int i=0;i<this.children.size();i++) {
+				if(children.get(i).isTheLastChild()) {
+					children.get(i).webPage.setScore(keywords);
+					children.get(i).nodeScore+=children.get(i).webPage.score;
+					this.nodeScore+=children.get(i).webPage.score;
+				}
+				else {
+					children.get(i).webPage.setScore(keywords);
+					this.nodeScore+=children.get(i).webPage.score;
+					children.get(i).setNodeScore(keywords);
+				}
 			}
-			else {
-				children.get(i).webPage.setScore(keywords);
-				this.nodeScore+=children.get(i).webPage.score;
-				children.get(i).setNodeScore(keywords);
-			}
-		}
-		
-		this.webPage.setScore(keywords);
-		this.nodeScore+=webPage.score;
+			
+			this.webPage.setScore(keywords);
+			this.nodeScore+=webPage.score;
+//		}
+//		else {
+//			this.webPage.setScore(keywords);
+//		}
 	}
 
 	public void addChild(WebNode child)

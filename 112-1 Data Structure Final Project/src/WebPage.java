@@ -8,6 +8,7 @@ public class WebPage
 	public WordCounter counter;
 	public double score;
 
+
 	public WebPage(String url, String name)
 	{
 		this.url = url;

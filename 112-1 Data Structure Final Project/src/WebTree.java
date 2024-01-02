@@ -15,12 +15,18 @@ public class WebTree
 		setPostOrderScore(root, keywords);
 	}
 
-	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws IOException
+	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) 
 	{
 		// YOUR TURN
 		// 3. compute the score of children nodes via post-order, then setNodeScore for
 		// startNode
-		startNode.setNodeScore(keywords);
+		try {
+			startNode.setNodeScore(keywords);
+//			System.out.println(startNode.webPage.name + "," + startNode.nodeScore);
+		}
+		catch(Exception e) {
+//			System.out.println("Error from: "+startNode.webPage.name);
+		}
 	}
 
 	public void eularPrintTree()
@@ -32,9 +38,9 @@ public class WebTree
 	{
 		int nodeDepth = startNode.getDepth();
 
-		if (nodeDepth > 1)
+		if (nodeDepth > 1) {
 			System.out.print("\n" + repeat("\t", nodeDepth - 1));
-
+		}
 		System.out.print("(");
 		System.out.print(startNode.webPage.name + "," + startNode.nodeScore);
 		
@@ -45,8 +51,9 @@ public class WebTree
 		}
 		System.out.print(")");
 
-		if (startNode.isTheLastChild())
+		if (startNode.isTheLastChild()) {
 			System.out.print("\n" + repeat("\t", nodeDepth - 2));
+		}
 	}
 
 	private String repeat(String str, int repeat)
