@@ -23,7 +23,7 @@ text-decoration:underline;
 </style>
 </head>
 <body>
-<body style='background-color: #C8DAD6'>
+<body style='background-color: #F4F6FF'>
 <form action='${requestUri}' method='get'>
 
 	<div style='position: absolute;margin-top:190px;margin-left:50px'>
@@ -42,7 +42,7 @@ text-decoration:underline;
 	</div>
 	<div>
 		<img src="images/reading.png"
-			style='position: absolute; width: 150px; height: 100px; left: 50%; top: 50%; margin-top: -280px; margin-left: -590px'>
+			style='position: absolute; width: 150px; height: 110px; left: 50%; top: 50%; margin-top: -280px; margin-left: -590px'>
 	</div>
 		<div>
 		<input type='text' class="border-style" id="padding" name='keyword'
