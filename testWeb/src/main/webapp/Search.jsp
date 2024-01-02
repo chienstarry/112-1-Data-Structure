@@ -236,22 +236,11 @@ function click80() {
 }
 </script>
 </head>
-<body style='background-color:#0489B1'>
+<body style='background-color:#F4F6FF'>
 <form action='${requestUri}' method='get'>
 
 <div class = 'box'style = 'position:absolute;margin-top:530px;margin-left:635px;'></div>
-<div class='note'>
-<img src="images/musical-note.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div> 
-<div class='note1'>
-<img src="images/musical-note.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div> 
-<div class='note2'>
-<img src="images/musical-note-2.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div>
-<div class='note3'>
-<img src="images/musical-note-2.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div>  
+
 <div>
 <input type='text' class="border-style" id="padding"  
 style='font-size:120%;position:absolute;left:50%;top:48%;
@@ -259,28 +248,12 @@ margin-top:-47px;margin-left:-400px;width:800px;height:45px' name='keyword' plac
 onfocus="placeholder= '' " onblur="placeholder='請輸入關鍵字'" />
 </div>
 <div>
-<button type='button' class='button' name='button20' onclick='click10()' style='border-radius:10px;cursor:pointer;margin-left:-100px'>10</button>
-</div>
-<div>
-<button type='button' class='button' name='button40' onclick='click20()' style='border-radius:10px;cursor:pointer;margin-left:-47.5px'>20</button>
-</div>
-<div>
-<button type='button' class='button' name='button60' onclick='click40()' style='border-radius:10px;cursor:pointer;margin-left:2.5px'>40</button>
-</div>
-<div>
-<button type='button' class='button' name='button80' onclick='click80()' style='border-radius:10px;cursor:pointer;margin-left:52.5px'>80</button>
-</div>
-<div>
-<input type='text' name='searchNum' value='10' style='color:#0489B1;border-style:none;background-color:#0489B1'>
-</div>
-<div>
-<input type='image' src="images/loupe-2.png" 
-style='position:absolute;width:37px;height:37px;left:50%;top:50%;margin-top:-55px;
+<input type='image' src="images/magnifier.png" 
+style='position:absolute;width:28px;height:28px;left:50%;top:50%;margin-top:-50px;
 margin-left:368px '/>
 </div>
 <div>
-<a href ='http://localhost:8080/Final_Project/TestProject'><img src="images/band-2.png" style='position:absolute;width:350px;height:150px;left:50%;top:50%;margin-top:-265px;
-margin-left:-175px '></a>
+<a href ='http://localhost:8080/Final_Project/TestProject'><img src="images/reading.png" style='position:absolute;width:250px;height:190px;left:50%;top:50%;margin-top:-275px;margin-left:-140px'></a>
 </div>
 </form>
 </body>
