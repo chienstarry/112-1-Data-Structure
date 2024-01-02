@@ -31,6 +31,7 @@ text-decoration:underline;
 		String[][] orderList = (String[][]) request.getAttribute("query");
 		for (int i = 0; i < orderList.length; i++) {
 			String s=orderList[i][1];
+			System.out.println(s);
 			s=s.substring(7);
 		%>
 		
@@ -42,7 +43,7 @@ text-decoration:underline;
 	</div>
 	<div>
 		<img src="images/reading.png"
-			style='position: absolute; width: 150px; height: 110px; left: 50%; top: 50%; margin-top: -280px; margin-left: -590px'>
+			style='position: absolute; width: 135px; height: 100px; left: 50%; top: 50%; margin-top: -285px; margin-left: -605px'>
 	</div>
 		<div>
 		<input type='text' class="border-style" id="padding" name='keyword'

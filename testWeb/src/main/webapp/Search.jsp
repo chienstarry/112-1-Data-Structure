@@ -240,18 +240,7 @@ function click80() {
 <form action='${requestUri}' method='get'>
 
 <div class = 'box'style = 'position:absolute;margin-top:530px;margin-left:635px;'></div>
-<div class='note'>
-<img src="images/musical-note.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div> 
-<div class='note1'>
-<img src="images/musical-note.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div> 
-<div class='note2'>
-<img src="images/musical-note-2.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div>
-<div class='note3'>
-<img src="images/musical-note-2.png" style = 'position:absolute;width:40px;height:40px;margin-top:520px' >
-</div>  
+
 <div>
 <input type='text' class="border-style" id="padding"  
 style='font-size:120%;position:absolute;left:50%;top:48%;
@@ -260,11 +249,11 @@ onfocus="placeholder= '' " onblur="placeholder='請輸入關鍵字'" />
 </div>
 <div>
 <input type='image' src="images/magnifier.png" 
-style='position:absolute;width:34px;height:34px;left:50%;top:50%;margin-top:-55px;
+style='position:absolute;width:28px;height:28px;left:50%;top:50%;margin-top:-50px;
 margin-left:368px '/>
 </div>
 <div>
-<a href ='http://localhost:8080/Final_Project/TestProject'><img src="images/reading.png" style='position:absolute;width:300px;height:180px;left:50%;top:50%;margin-top:-265px;margin-left:-225px '></a>
+<a href ='http://localhost:8080/Final_Project/TestProject'><img src="images/reading.png" style='position:absolute;width:250px;height:190px;left:50%;top:50%;margin-top:-275px;margin-left:-140px'></a>
 </div>
 </form>
 </body>
