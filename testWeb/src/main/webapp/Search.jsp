@@ -34,226 +34,7 @@
 	animation-iteration-count: infinite;
 }
 
-@
-keyframes note { 0%{
-	left: 640px;
-	top: 0px;
-}
 
-25
-%
-{
-left
-:
-700px;
-top
-:
-60px;
-}
-50
-%
-{
-left
-:
-760px;
-top
-:
-0px;
-}
-75
-%
-{
-left
-:
-700px;
-top
-:
--60px;
-}
-100
-%
-{
-left
-:
-640px;
-top
-:
-0px;
-}
-}
-.note1 {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	animation-direction: alternate;
-	animation-timing-function: ease-in-out;
-	animation-name: note1;
-	animation-duration: 5s;
-	animation-iteration-count: infinite;
-}
-
-@
-keyframes note1 { 0%{
-	left: 760px;
-	top: 0px;
-}
-
-25
-%
-{
-left
-:
-700px;
-top
-:
--60px;
-}
-50
-%
-{
-left
-:
-640px;
-top
-:
-0px;
-}
-75
-%
-{
-left
-:
-700px;
-top
-:
-60px;
-}
-100
-%
-{
-left
-:
-760px;
-top
-:
-0px;
-}
-}
-.note2 {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	animation-direction: alternate;
-	animation-timing-function: ease-in-out;
-	animation-name: note2;
-	animation-duration: 5s;
-	animation-iteration-count: infinite;
-}
-
-@
-keyframes note2 { 0%{
-	left: 700px;
-	top: -60px;
-}
-
-25
-%
-{
-left
-:
-640px;
-top
-:
-0px;
-}
-50
-%
-{
-left
-:
-700px;
-top
-:
-60px;
-}
-75
-%
-{
-left
-:
-760px;
-top
-:
-0px;
-}
-100
-%
-{
-left
-:
-700px;
-top
-:
--60px;
-}
-}
-.note3 {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	animation-direction: alternate;
-	animation-timing-function: ease-in-out;
-	animation-name: note3;
-	animation-duration: 5s;
-	animation-iteration-count: infinite;
-}
-
-@
-keyframes note3 { 0%{
-	left: 700px;
-	top: 60px;
-}
-
-25
-%
-{
-left
-:
-760px;
-top
-:
-0px;
-}
-50
-%
-{
-left
-:
-700px;
-top
-:
--60px;
-}
-75
-%
-{
-left
-:
-640px;
-top
-:
-0px;
-}
-100
-%
-{
-left
-:
-700px;
-top
-:
-60px;
-}
 }
 .box {
 	position: relative;
@@ -348,6 +129,14 @@ background
 #eee;
 }
 }
+body {
+  background-image: url('images/backgroundPhoto.jpg');
+  background-color: #FFF8F1;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
 </style>
 <script type="text/javascript">
 	function click10() {
@@ -368,26 +157,28 @@ background
 	}
 </script>
 </head>
-<body style='background-color: #F4F6FF'>
+<body style='background-color: #FFF8F1'>
 	<form action='${requestUri}' method='get'>
-
-		<div class='box'
-			style='position: absolute; margin-top: 530px; margin-left: 635px;'></div>
-
+		
 		<div>
 			<input type='text' class="border-style" id="padding"
-				style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -47px; margin-left: -400px; width: 800px; height: 45px; border-radius: 90px; border: 4px solid #ADBDFF; background: rgba(244, 246, 255, 0.70)'
+				style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -92px; margin-left: -375px; width: 750px; height: 45px; border-radius: 90px; border: 4px solid #D1BCA8; background: rgba(227, 224, 219, 1); mix-blend-mode: hard-light'
 				name='keyword' placeholder='請輸入關鍵字' onfocus="placeholder= '' "
 				onblur="placeholder='請輸入關鍵字'" />
 		</div>
 		<div>
 			<input type='image' src="images/magnifier.png"
-				style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -48px; margin-left: 368px; background: url(<path-to-image>)/ cover no-repeat; opacity: 30%; mix-blend-mode: color-burn'/>
+				style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -93px; margin-left: 343px; background: url(<path-to-image>)/ cover no-repeat; opacity: 30%; mix-blend-mode: color-burn'/>
 		</div>
 		<div>
 			<a href='http://localhost:8080/Final_Project/TestProject'><img
-				src="images/reading.png"
-				style='position: absolute; width: 250px; height: 190px; left: 50%; top: 50%; margin-top: -275px; margin-left: -140px'></a>
+				src="images/InkQC2.png"
+				style='position: absolute; width: 545px; height: 140px; left: 50%; top: 50%; margin-top: -245px; margin-left: -185px'></a>
+		</div>
+		<div>
+			<a href='http://localhost:8080/Final_Project/TestProject'><img
+				src="images/InkQE.png"
+				style='position: absolute; width: 665px; height: 190px; left: 50%; top: 50%; margin-top: -275px; margin-left: -420px'></a>
 		</div>
 	</form>
 </body>
