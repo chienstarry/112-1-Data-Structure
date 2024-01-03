@@ -20,39 +20,49 @@ text-decoration:underline;
 .border-style {
 	border-radius: 90px/90px;
 }
+body {
+  background-image: url('images/SearchResult.png');
+  background-color: #FFF8F1;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
 </style>
 </head>
 <body>
-<body style='background-color: #F4F6FF'>
+<body style='background-color: #FFF8F1'>
 <form action='${requestUri}' method='get'>
-
 	
-	<div style='position: absolute; margin-top:190px; margin-left:50px'>
+	<div style='font-size: 80%; color: #503922; position: absolute; margin-top:170px; margin-left:150px'>
 		<%
 		String[][] orderList = (String[][]) request.getAttribute("query");
 		for (int i = 0; i < orderList.length; i++) {
 			String s=orderList[i][1];
 		%>
 		
-		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br><br>
+		<a href='<%=s%>' style='font-size: 200%; color: #362717'><%=orderList[i][0]%> </a> <br><br>
 		<br>
 		<%
 }
 %>
 	</div>
 	<div>
-		<img src="images/reading.png"
-			style='position: absolute; width: 135px; height: 100px; left: 50%; top: 50%; margin-top: -285px; margin-left: -605px'>
+		<img src="images/InkQC2.png"
+			style='position: absolute; width: 300px; height: 77px; left: 50%; top: 50%; margin-top: -235px; margin-left: -670px'>
 	</div>
-	
+	<div>
+		<img src="images/InkQE.png"
+			style='position: absolute; width: 465px; height: 125px; left: 50%; top: 50%; margin-top: -305px; margin-left: -750px'>
+	</div>
 	<div>
 	<input type='text' class="border-style" id="padding" name='keyword'
-			style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -250px; margin-left: -400px; width: 800px; height: 25px; border-radius: 90px; border: 4px solid #ADBDFF; background: rgba(244, 246, 255, 0.70)'
+			style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -245px; margin-left: -400px; width: 750px; height: 30px; border-radius: 90px; border: 4px solid #D1BCA8; background: rgba(227, 224, 219, 1)'
 			placeholder = '請輸入關鍵字' value='<%=request.getParameter("keyword")%>'/>
 	</div>
 	<div>
 		<input type='image' src="images/magnifier.png"
-			style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -255px; margin-left: 368px; background: url(<path-to-image>)/ cover no-repeat; opacity: 30%; mix-blend-mode: color-burn' />
+			style='position: absolute; width: 28px; height: 28px; left: 50%; top: 50%; margin-top: -247px; margin-left: 318px; background: url(<path-to-image>)/ cover no-repeat; opacity: 30%; mix-blend-mode: color-burn' />
 	</div>
 
 </form>
