@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloWorld extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 處理搜索请求，這裡簡化，僅轉發
+		// 處理搜索請求，這裡簡化，僅轉發
 		String keyword = request.getParameter("keyword");
 		int searchNum = Integer.parseInt(request.getParameter("searchNum"));
 
-		// 这里应添加处理搜索逻辑的代码，例如调用其他服务或算法
+		// 這裡應添加處裡搜索邏輯的代碼，例如調用其他服務或算法
 
-		// 假设我们得到了搜索结果，现在转发到 googleitem.jsp
-		request.setAttribute("query", new String[][] { /* 搜索结果数据 */ });
+		// 假設我們得到了搜索結果，現在轉發到 googleitem.jsp
+		request.setAttribute("query", new String[][] { /* 搜索結果數據 */ });
 		request.getRequestDispatcher("googleitem.jsp").forward(request, response);
 	}
 

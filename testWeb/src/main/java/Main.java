@@ -23,7 +23,7 @@ public class Main {
 	        String searchKeyword = googleInput + (isEnglish(googleInput) ? " novel" : " 小說");
 
 			// 使用主搜索關鍵詞進行Google搜索
-			GoogleQuery google = new GoogleQuery(searchKeyword + "小說");
+			GoogleQuery google = new GoogleQuery(searchKeyword + "");
 			google.query();
 			ArrayList<String> googleNameList = google.outputName;
 			ArrayList<String> googleSiteList = google.outputSite;
@@ -41,8 +41,8 @@ public class Main {
 					webPages.add(page);
 				} catch (IOException e) {
 					System.out.println("Error setting score for URL: " + page.url);
-					// 在这里添加逻辑以处理无法访问的网址，比如记录日志、跳过当前网址等
-					continue; // 跳过当前的循环迭代
+					// 在這裡加邏輯以處裡無法訪問的網址，比如紀錄日誌、跳過當前網址等
+					continue; // 跳過當前的循環迭代
 				}
 				System.out.println(i);
 			}

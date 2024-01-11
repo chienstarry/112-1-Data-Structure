@@ -9,6 +9,8 @@ public class KeywordConfig {
 		// 關鍵字權重
 
 		// 小說網
+		DEFAULT_KEYWORDS_ZH.add(new Keyword("半夏小說", 500.0));
+		//DEFAULT_KEYWORDS_ZH.add(new Keyword("番茄小說", 5000.0));
 		DEFAULT_KEYWORDS_ZH.add(new Keyword("起点中文网", 500.0));
 		DEFAULT_KEYWORDS_ZH.add(new Keyword("晋江文学城", 500.0));
 		DEFAULT_KEYWORDS_ZH.add(new Keyword("红袖添香", 500.0));
@@ -43,7 +45,7 @@ public class KeywordConfig {
         } else {
             keywords = new ArrayList<>(DEFAULT_KEYWORDS_ZH);
         }
-        keywords.add(0, new Keyword(userInput, weight)); // 将用户输入添加到列表的开头
+        keywords.add(0, new Keyword(userInput, weight)); // 將用戶輸入添加到列表的開頭
         return keywords;
     }
 	

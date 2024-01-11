@@ -1,6 +1,10 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 public class WebPage {
 	public String url;
 	public String name;
@@ -27,4 +31,5 @@ public class WebPage {
 		return score;
 
 	}
+
 }

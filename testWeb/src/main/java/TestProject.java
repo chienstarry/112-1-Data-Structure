@@ -51,7 +51,7 @@ public class TestProject extends HttpServlet {
 		ArrayList<String> googleSiteList = google.outputSite;
 		ArrayList<WebPage> webPages = new ArrayList<>();
 
-		// 使用主搜索關鍵詞進行Google搜索
+		// 使用主關鍵詞進行Google搜索
 		ArrayList<Keyword> keywords = KeywordConfig.getKeywords(googleInput, 1000.0);
 
 		for (int i = 0; i < googleSiteList.size(); i++) {
@@ -63,8 +63,8 @@ public class TestProject extends HttpServlet {
 				webPages.add(page);
 			} catch (IOException e) {
 				System.out.println("Error setting score for URL: " + page.url);
-				// 在这里添加逻辑以处理无法访问的网址，比如记录日志、跳过当前网址等
-				continue; // 跳过当前的循环迭代
+				//處理無法訪問的網址，比如紀錄日誌、跳過當前網址等
+				continue; // 跳過目前的循環
 			}
 			System.out.println(i);
 		}

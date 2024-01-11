@@ -45,8 +45,8 @@ public class Sort {
 			if (page.name.contains("博客來") || page.name.contains("金石堂") || page.name.contains("誠品")
 					|| page.name.contains("淘寶") || page.name.contains("商") || page.name.contains("蝦皮")
 					|| page.name.contains("書店") || page.name.contains("購物") || page.name.contains("百科")
-					|| page.name.contains("買")|| page.name.contains("Taobao")) {
-				iterator.remove(); // 使用迭代器的 remove 方法删除元素
+					|| page.name.contains("買")|| page.name.contains("Taobao") || page.name.contains("比價")) {
+				iterator.remove(); // 使用迭代器的 remove 方法刪除元素
 			}
 		}
 	}
